@@ -4,7 +4,7 @@ import AuthService from './AuthService';
 
 class Login extends Component {
     constructor(){
-        super(); 
+        super() 
         this.handleChange = this.handleChange.bind(this); 
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.Auth = new AuthService();   
