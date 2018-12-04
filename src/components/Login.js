@@ -9,6 +9,17 @@ class Login extends Component {
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.Auth = new AuthService();   
     }
+    handleFormSubmit(e){
+        e.preventDefault();
+      
+        this.Auth.login(this.state.username,this.state.password)
+            .then(res =>{
+               this.props.history.replace('/');
+            })
+            .catch(err =>{
+                alert(err);
+            })
+    }
     render() {
         return (
             <div className="center">
@@ -46,17 +57,6 @@ class Login extends Component {
                 [e.target.name]: e.target.value
             }
         )
-    }
-    handleFormSubmit(e){
-        e.preventDefault();
-      
-        this.Auth.login(this.state.username,this.state.password)
-            .then(res =>{
-               this.props.history.replace('/');
-            })
-            .catch(err =>{
-                alert(err);
-            })
     }
     componentWillMount(){
         if(this.Auth.loggedIn())

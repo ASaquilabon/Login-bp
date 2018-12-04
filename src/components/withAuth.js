@@ -27,7 +27,17 @@ export default function withAuth(AuthComponent) {
                     }
                 }
             }
-
+            handleFormSubmit(e){
+                e.preventDefault();
+              
+                this.Auth.login(this.state.username,this.state.password)
+                    .then(res =>{
+                       this.props.history.replace('/');
+                    })
+                    .catch(err =>{
+                        alert(err);
+                    })
+            }
             render() {
                 if (this.state.user) {
                     return (
